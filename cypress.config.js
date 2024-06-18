@@ -1,10 +1,20 @@
-module.exports = {
-    // Autres configurations...
-    testFiles: '**/*.cy.js',
-    // Configuration pour les tests end-to-end (e2e)
-    e2e: {
-        specPattern: 'cypress/e2e/**/*.spec.js',
-        // D'autres configurations spécifiques aux tests e2e
+const { defineConfig } = require('cypress');
+const mochawesome = require('cypress-mochawesome-reporter/plugin');
+
+module.exports = defineConfig({
+  reporter: 'cypress-mochawesome-reporter',
+  reporterOptions: {
+    reportDir: 'cypress/results',
+    overwrite: false,
+    html: false,
+    json: true
+  },
+  e2e: {
+    setupNodeEvents(on, config) {
+      mochawesome(on);
+      // Vous pouvez ajouter d'autres événements ici si nécessaire
     },
-    // Autres configurations...
-}
+    baseUrl: 'http://localhost:8080',
+    specPattern: 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}'
+  }
+});

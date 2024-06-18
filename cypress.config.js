@@ -1,9 +1,9 @@
 module.exports = {
     // Autres configurations...
-    testFiles: '**/*.cy.{js,jsx,ts,tsx}',
+    testFiles: '**/*.cy.js',
     // Configuration pour les tests end-to-end (e2e)
     e2e: {
-        testFiles: 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
+        specPattern: 'cypress/e2e/**/*.spec.js',
         // D'autres configurations spécifiques aux tests e2e
     },
     // Autres configurations...
